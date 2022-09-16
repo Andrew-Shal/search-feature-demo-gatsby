@@ -1,0 +1,16 @@
+.filterByDropDown {
+    width: 150px;
+
+    select {
+        width: 100%;
+        background: #f9eed3;
+        border: 1px solid #c7b380;
+        padding: 5px 5px;
+
+        option {
+            &[value=''][disabled] {
+                display: none;
+            }
+        }
+    }
+}

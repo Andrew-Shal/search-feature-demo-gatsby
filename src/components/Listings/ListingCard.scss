@@ -1,0 +1,21 @@
+.listingCard {
+    border: 1px solid #f88080;
+    padding: 10px 15px;
+    width: 100%;
+
+    @media (min-width: 768px) {
+        width: 50%;
+    }
+
+    @media (min-width: 992px) {
+        width: 33.33%;
+    }
+
+    @media (min-width: 1200px) {
+        width: 25%;
+    }
+
+    .listingData {
+        display: block;
+    }
+}

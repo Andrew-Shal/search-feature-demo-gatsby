@@ -1,8 +1,8 @@
 {
-  "name": "my-gatsby-site",
+  "name": "search-feature-demo",
   "version": "1.0.0",
   "private": true,
-  "description": "my-gatsby-site",
+  "description": "search-feature-demo",
   "author": "andrew",
   "keywords": [
     "gatsby"
@@ -16,9 +16,18 @@
   },
   "dependencies": {
     "gatsby": "^4.23.0",
-    "gatsby-plugin-sass": "^5.23.0",
+    "dotenv": "^16.0.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "sass": "^1.54.9"
+    "sass": "^1.54.9",
+    "gatsby-plugin-sass": "^5.23.0",
+    "gatsby-plugin-use-query-params": "^1.0.1",
+    "gatsby-source-graphcms": "^2.8.0",
+    "react-router-dom": "^6.4.0",
+    "use-query-params": "^2.1.0",
+    "gatsby-plugin-image": "^2.22.0",
+    "gatsby-plugin-sharp": "^4.22.0",
+    "gatsby-transformer-sharp": "^4.22.0",
+    "gatsby-source-filesystem": "^4.22.0"
   }
 }
