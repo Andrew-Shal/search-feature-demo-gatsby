@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
-
 import { updateURLSearchParam, searchFn } from '../../../utility/utils'
 import FilterByDropDown from './components/FilterByDropDown'
 import SearchBar from './components/SearchBar'

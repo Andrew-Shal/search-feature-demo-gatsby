@@ -8,11 +8,13 @@ import SearchWrapper from '../components/Search/shared/SearchWrapper'
 const HomePage = ({ data }) => {
     const handleSearchParams = (searchParams) => {
         console.log('[HomePage - handleSearchParams]')
-        console.log('searchParams: ', searchParams)
-
         let sq = ''
         if (searchParams.searchtext) sq = `?sq=${searchParams.searchtext}`
-        window.location.href = searchParams.selectedListingType.slug + sq
+        const isBrowser = typeof window !== 'undefined'
+        console.log('isBrowser: ', isBrowser)
+        if (isBrowser) {
+            window.location.href = searchParams.selectedListingType.slug + sq
+        }
     }
 
     const countries = data.allListingTypesByCountry.nodes || []

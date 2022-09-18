@@ -12,7 +12,6 @@ const ListElem = ({ name, value }) => {
 }
 // this will be the generic card for all listings
 const ListingCard = ({ listingCardData }) => {
-    console.log(listingCardData)
     return (
         <div className="listingCard">
             <div className="listingData">

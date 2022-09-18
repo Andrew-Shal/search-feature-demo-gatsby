@@ -2,9 +2,35 @@ export const prependCountryToSlug = (countryName, slug) => {
     return '/' + countryName + slug
 }
 
+//TODO: update with args and spread to be more dynamic
+export const getQueryParams = () => {
+    const isBrowser = typeof window !== 'undefined'
+
+    let qp_searchKeyword = ''
+    let qp_BuildingStyle = ''
+    let qp_BuildingStatus = ''
+
+    if (isBrowser) {
+        const url = new URL(window.location.href)
+        const searchParams = url.searchParams
+        qp_searchKeyword = searchParams.get('sq')
+        qp_BuildingStyle = searchParams.get('style')
+        qp_BuildingStatus = searchParams.get('status')
+    }
+    return {
+        sq: qp_searchKeyword,
+        style: qp_BuildingStyle,
+        status: qp_BuildingStatus,
+    }
+}
+
 export const updateURLSearchParam = (keys, values, currentQueryParams) => {
     console.log('[updateURLSearchParam]', keys, values)
-    let updatedSearchParams = new URLSearchParams(currentQueryParams.toString())
+    const isBrowser = typeof window !== 'undefined'
+    let updatedSearchParams
+    if (isBrowser) {
+        updatedSearchParams = new URLSearchParams(currentQueryParams.toString())
+    }
 
     for (let i = 0; i < keys.length; i++) {
         if (values[i] === '' || values[i] === null) {

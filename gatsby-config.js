@@ -5,6 +5,9 @@ module.exports = {
         title: `Search Feature Demo`,
         siteUrl: `https://www.yourdomain.tld`,
     },
+    flags: {
+        DEV_SSR: true,
+    },
     plugins: [
         'gatsby-plugin-sass',
         'gatsby-plugin-use-query-params',
