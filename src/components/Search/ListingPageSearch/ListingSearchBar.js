@@ -4,7 +4,7 @@ import SearchByButtons from './components/SearchByButtons'
 import FilterByDropDown from './components/FilterByDropDown'
 import './ListingSearchBar.scss'
 
-const ListingSearchBar = ({ onSelectedListingTypeChanged, defaultListingType, listingTypes, filterByEnums, dataSource, onSearchResults }) => {
+const ListingSearchBar = ({ onSelectedListingTypeChanged, defaultListingType, listingTypes, filterByEnums, dataSource, onSearchResults, onSearchParams }) => {
     useEffect(() => {
         console.log('data source changed: ', dataSource)
         const sp = buildSearchParams()
@@ -147,7 +147,10 @@ const ListingSearchBar = ({ onSelectedListingTypeChanged, defaultListingType, li
     const handleSubmit = (e) => {
         console.log('[handleSubmit]')
         e.preventDefault()
-        onSearchResults(doSearch(buildSearchParams()))
+        const sp = buildSearchParams()
+
+        onSearchParams(sp)
+        onSearchResults(doSearch(sp))
     }
     // ========== END OF SEARCH BAR HANDLERS ==========
 
@@ -193,11 +196,7 @@ const ListingSearchBar = ({ onSelectedListingTypeChanged, defaultListingType, li
                     {filterGroupByListingType.data?.buildingStyle.length ? (
                         <FilterByDropDown selected={selectedBuildingStyle} options={filterGroupByListingType.data.buildingStyle} placeholder={'Building Style'} onChange={handleBuildingTypesChange} />
                     ) : null}
-                    {selectedBuildingStatus || selectedBuildingStyle ? (
-                        <a className="clearBtn" href="#" onClick={onClearFilters}>
-                            clear
-                        </a>
-                    ) : null}
+                    {selectedBuildingStatus || selectedBuildingStyle ? <input className="clearBtn" type="button" onClick={onClearFilters} value="clear" /> : null}
                 </div>
             </div>
         </form>
