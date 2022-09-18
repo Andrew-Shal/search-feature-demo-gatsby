@@ -1,34 +1,6 @@
 exports.createPages = async ({ actions, graphql }) => {
     const { createPage } = actions
 
-    /*     // used to build country pages
-    const { data } = await graphql(`
-        {
-            allGraphCmsItemCountry {
-                edges {
-                    node {
-                        countrySlug
-                        id
-                    }
-                }
-            }
-        }
-    `)
-
-    const countries = data.allGraphCmsItemCountry.edges
-
-    countries.forEach((country) => {
-        createPage({
-            path: `/${country.node.countrySlug}/`,
-            component: require.resolve('./src/templates/Country/listingPageByCountry.js'),
-            context: {
-                slug: country.node.countrySlug,
-                id: country.node.id,
-            },
-            defer: country.node.countrySlug > 3,
-        })
-    }) */
-
     // get enums for filtering dropdowns
     const { data: listingTypesEnums } = await graphql(`
         {
@@ -125,7 +97,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
     createPage({
         path: `/real-estate/listings`,
-        component: require.resolve('./src/templates/ListingType/listingPageByListingType.js'),
+        component: require.resolve('./src/templates/ListingsByListingType/ListingsByListingTypeTemplate.js'),
         context: {
             title: 'Real Estate',
             listingType: 'real-estate',
@@ -138,7 +110,7 @@ exports.createPages = async ({ actions, graphql }) => {
     })
     createPage({
         path: `/land/listings`,
-        component: require.resolve('./src/templates/ListingType/listingPageByListingType.js'),
+        component: require.resolve('./src/templates/ListingsByListingType/ListingsByListingTypeTemplate.js'),
         context: {
             title: 'Land',
             listingType: 'land',
@@ -151,7 +123,7 @@ exports.createPages = async ({ actions, graphql }) => {
     })
     createPage({
         path: `/hotel/listings`,
-        component: require.resolve('./src/templates/ListingType/listingPageByListingType.js'),
+        component: require.resolve('./src/templates/ListingsByListingType/ListingsByListingTypeTemplate.js'),
         context: {
             title: 'hotel',
             listingType: 'hotel',
@@ -269,7 +241,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
         createPage({
             path: `/${country.countrySlug}/real-estate/listings`,
-            component: require.resolve('./src/templates/Countryv2/listingPageByCountryv2.js'),
+            component: require.resolve('./src/templates/ListingsByCountry/ListingsByCountryTemplate.js'),
             context: {
                 countryId: country.id,
                 title: `Real Estates in ${country.countryName}`,
@@ -285,7 +257,7 @@ exports.createPages = async ({ actions, graphql }) => {
         })
         createPage({
             path: `/${country.countrySlug}/land/listings`,
-            component: require.resolve('./src/templates/Countryv2/listingPageByCountryv2.js'),
+            component: require.resolve('./src/templates/ListingsByCountry/ListingsByCountryTemplate.js'),
             context: {
                 countryId: country.id,
                 title: `Lands in ${country.countryName}`,
@@ -301,7 +273,7 @@ exports.createPages = async ({ actions, graphql }) => {
         })
         createPage({
             path: `/${country.countrySlug}/hotel/listings`,
-            component: require.resolve('./src/templates/Countryv2/listingPageByCountryv2.js'),
+            component: require.resolve('./src/templates/ListingsByCountry/ListingsByCountryTemplate.js'),
             context: {
                 countryId: country.id,
                 title: `Hotels in ${country.countryName}`,

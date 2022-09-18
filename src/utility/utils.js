@@ -19,10 +19,8 @@ export const updateURLSearchParam = (keys, values, currentQueryParams) => {
 // MAIN SEARCH LOGIC
 export const searchFn = (dataset, searchParams) => {
     console.log('searching...')
-    console.log('searchParams: ', searchParams)
 
     // js code to do filtering based on search params
-    // const hasCountryFilter = country ? true : false
     const hasBuildingTypeFilter = searchParams.buildingStyle ? true : false
     const hasBuildingStatusFilter = searchParams.buildingStatus ? true : false
 

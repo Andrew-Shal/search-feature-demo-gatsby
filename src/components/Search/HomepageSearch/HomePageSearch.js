@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import SearchByButtons from '../ListingPageSearchv2/components/SearchByButtons'
+import SearchByButtons from '../ListingPageSearch/components/SearchByButtons'
+import SearchBar from '../ListingPageSearch/components/SearchBar'
 
 const HomePageSearch = ({ onSelectedListingTypeChanged = null, defaultListingType, listingTypes, onSearchParams }) => {
     const [searchParamsState, setSearchParamsState] = useState({
@@ -13,9 +14,9 @@ const HomePageSearch = ({ onSelectedListingTypeChanged = null, defaultListingTyp
         onSearchParams({ ...searchParamsState })
     }
 
-    const handleSearchTextChange = (e) => {
+    const handleSearchTextChange = (newValue) => {
         console.log('[HomePageSearch - handleSearchChange]')
-        const sq = e.target.value
+        const sq = newValue
         setSearchParamsState({ ...searchParamsState, searchtext: sq })
     }
 
@@ -28,8 +29,16 @@ const HomePageSearch = ({ onSelectedListingTypeChanged = null, defaultListingTyp
 
     return (
         <form onSubmit={handleSubmit}>
-            <SearchByButtons selected={searchParamsState.selectedListingType} shouldPreventDefault={true} searchByTypes={listingTypes} onSearchByChange={handleSearchByChange} />
-            <input type="text" className="homePageSearchBar" onChange={handleSearchTextChange} placeholder="search..." />
+            <SearchByButtons
+                classes={['homepage-variant']}
+                selected={searchParamsState.selectedListingType}
+                shouldPreventDefault={true}
+                searchByTypes={listingTypes}
+                onSearchByChange={handleSearchByChange}
+            />
+            <div className="searchBarContainer">
+                <SearchBar value={searchParamsState.searchText} onSearchTextChange={handleSearchTextChange} classes={['homePageSearchBar']} placeholder="Begin Searching..." />
+            </div>
         </form>
     )
 }

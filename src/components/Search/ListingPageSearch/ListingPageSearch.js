@@ -3,9 +3,10 @@ import { useSearchParams } from 'react-router-dom'
 
 import { updateURLSearchParam, searchFn } from '../../../utility/utils'
 import FilterByDropDown from './components/FilterByDropDown'
-import './ListingSearchBarv2.scss'
+import SearchBar from './components/SearchBar'
+import './ListingPageSearch.scss'
 
-const ListingPageSearchv2 = ({ dataSource, filterGroups, onSearchResults, onSearchParams = null, searchPlaceholder }) => {
+const ListingPageSearch = ({ dataSource, filterGroups, onSearchResults, onSearchParams = null, searchPlaceholder }) => {
     // HANDLE QUERY PARAMS IF PASSED IN THE URL TO INITALIZE STATES
     const [queryParams, setQueryParams] = useSearchParams()
     const qp_searchKeyword = queryParams.get('sq')
@@ -36,10 +37,10 @@ const ListingPageSearchv2 = ({ dataSource, filterGroups, onSearchResults, onSear
         if (onSearchParams) onSearchParams(sp)
         onSearchResults(searchFn(dataSource, sp))
     }
-    const handleSearchTextChange = (e) => {
+    const handleSearchTextChange = (value) => {
         console.log('[handleSearchTextChange]')
-        setSearchText(e.target.value)
-        setQueryParams(updateURLSearchParam(['search'], [e.target.value], queryParams))
+        setSearchText(value)
+        setQueryParams(updateURLSearchParam(['search'], [value], queryParams))
     }
     const handleBuildingStatusChange = (selectedValue) => {
         console.log('[handleBuildingStatusChange]')
@@ -67,8 +68,7 @@ const ListingPageSearchv2 = ({ dataSource, filterGroups, onSearchResults, onSear
     return (
         <form onSubmit={handleSubmit}>
             <div className="searchBarContainer">
-                <input className="searchbar" type="text" value={searchText} onChange={handleSearchTextChange} placeholder={`Search ${searchPlaceholder}`} />
-                <input className="searchSubmit" type="submit" value="Ok" />
+                <SearchBar value={searchText} onSearchTextChange={handleSearchTextChange} placeholder={`Search ${searchPlaceholder}`} />
                 <div className="filterByGroup">
                     {filterGroups.buildingStatusOptions.length ? (
                         <FilterByDropDown selected={selectedBuildingStatus} options={filterGroups.buildingStatusOptions} placeholder={'Building Status'} onChange={handleBuildingStatusChange} />
@@ -83,4 +83,4 @@ const ListingPageSearchv2 = ({ dataSource, filterGroups, onSearchResults, onSear
     )
 }
 
-export default ListingPageSearchv2
+export default ListingPageSearch

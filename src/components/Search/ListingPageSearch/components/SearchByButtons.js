@@ -1,22 +1,23 @@
 import React from 'react'
 import './SearchByButtons.scss'
 
-const SearchByButtons = ({ selected, searchByTypes, onSearchByChange }) => {
+const SearchByButtons = ({ selected, searchByTypes, onSearchByChange = null, shouldPreventDefault = false, classes = [] }) => {
     const handleSearchByBtnClick = (searchByType, event) => {
-        event.preventDefault()
-        onSearchByChange(searchByType)
+        if (shouldPreventDefault) event.preventDefault()
+        if (onSearchByChange) onSearchByChange(searchByType)
     }
 
     return (
-        <div className="searchByButtons">
+        <div className={`searchByButtons${classes.length ? ' ' + classes.join(' ') : ''}`}>
             {searchByTypes.map((searchByType) => (
-                <input
-                    type="button"
+                <a
+                    href={`${searchByType.slug}`}
                     key={searchByType.id}
                     className={`searchByButton ${selected.id === searchByType.id ? 'active' : ''}`}
                     onClick={handleSearchByBtnClick.bind(this, searchByType)}
-                    value={searchByType.label}
-                />
+                >
+                    {searchByType.label}
+                </a>
             ))}
         </div>
     )

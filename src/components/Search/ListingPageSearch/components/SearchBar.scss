@@ -1,0 +1,27 @@
+.searchBarWrapper {
+    .searchbar {
+        height: 35px;
+        font-size: 18px;
+        padding: 0px 0px 0px 10px;
+        border: 2px solid #145866;
+        background: antiquewhite;
+        width: calc(100% - 14px);
+    }
+
+    .searchSubmit {
+        width: 50px;
+        padding: 0px 10px;
+        position: absolute;
+        right: 0;
+        top: 2px;
+        height: 35px;
+        background: none;
+        border: none;
+        border-left: 1px solid #145866;
+
+        &:hover {
+            background: #c9ab84;
+            cursor: pointer;
+        }
+    }
+}

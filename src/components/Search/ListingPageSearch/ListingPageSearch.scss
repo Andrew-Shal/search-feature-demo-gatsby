@@ -1,15 +1,7 @@
 .searchBarContainer {
-    width: 800px;
     margin: 0 auto;
-
-    .searchbar {
-        width: calc(100% - 60px);
-    }
-
-    .searchSubmit {
-        width: 50px;
-        padding: 0px 10px;
-    }
+    width: 100%;
+    position: relative;
 
     .filterByGroup {
         display: flex;
