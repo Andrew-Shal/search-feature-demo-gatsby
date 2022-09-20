@@ -39,7 +39,7 @@ const ListingPageSearch = ({ dataSource, filterGroups, onSearchResults, onSearch
     const handleSearchTextChange = (value) => {
         console.log('[handleSearchTextChange]')
         setSearchText(value)
-        setQueryParams(updateURLSearchParam(['search'], [value], queryParams))
+        setQueryParams(updateURLSearchParam(['sq'], [value], queryParams))
     }
     const handleBuildingStatusChange = (selectedValue) => {
         console.log('[handleBuildingStatusChange]')

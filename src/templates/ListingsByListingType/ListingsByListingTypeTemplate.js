@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Listings from '../../components/Listings/Listings'
 import SearchByButtons from '../../components/Search/ListingPageSearch/components/SearchByButtons'
 import ListingPageSearch from '../../components/Search/ListingPageSearch/ListingPageSearch'
